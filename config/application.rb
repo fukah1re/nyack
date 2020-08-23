@@ -11,6 +11,9 @@ module Nyack
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # デフォルトのテンプレートエンジンをslimに変更
+    config.generators.template_engine = :slim
+
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 
