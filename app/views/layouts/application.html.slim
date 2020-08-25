@@ -9,15 +9,32 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      nav
-        - if user_signed_in?
-          strong
-            = link_to current_user.username, posts_show_path
-          = link_to 'プロフィール変更', edit_user_registration_path
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete
-        - else
-          = link_to 'サインアップ', new_user_registration_path
-          = link_to 'ログイン', new_user_session_path
+      nav.uk_navbar-container.uk-margin[uk-navbar]
+        .uk-navbar-left
+          = link_to 'Nyack', posts_show_path, class: 'uk-navbar-item uk-logo'
+          ul.uk-navbar-nav
+            li
+              = link_to 'みんなの投稿', posts_show_path
+        .uk-navbar-right
+          ul.uk-navbar-nav
+            - if user_signed_in?
+              li
+                = link_to '新規投稿', ''
+              li
+                = link_to '#' do
+                  span.uk-icon.uk-margin-small-right uk-icon='icon: star'
+                  = current_user.username
+                .uk-navbar-dropdown
+                  ul.uk-nav.uk-navbar-dropdown-nav
+                    li.uk-active
+                      = link_to 'プロフィール', '#'
+                    li
+                      = link_to 'ログアウト', '#'
+            - else
+              li
+                = link_to '新規登録', new_user_registration_path
+              li
+                = link_to 'ログイン', new_user_session_path
     p.notice
       = notice
     p.alert
