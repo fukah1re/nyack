@@ -1,0 +1,34 @@
+header
+  nav.uk-navbar-container.uk-margin uk-navbar=""
+    div class="uk-navbar-left uk-visible@s"
+      = link_to 'Nyack', posts_show_path, class: 'uk-navbar-item uk-logo'
+      ul.uk-navbar-nav
+        li
+          = link_to 'みんなの投稿', posts_show_path
+    div class="uk-navbar-right uk-visible@s"
+      ul.uk-navbar-nav
+        - if user_signed_in?
+          li
+            = link_to '新規投稿', '#'
+          li
+            = link_to '#' do
+              span.uk-icon.uk-margin-small-right uk-icon='icon: star'
+              = current_user.username
+            .uk-navbar-dropdown
+              ul.uk-nav.uk-navbar-dropdown-nav
+                li
+                  = link_to 'プロフィール', '#'
+                li
+                  = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          li
+            = link_to '新規登録', new_user_registration_path
+          li
+            = link_to 'ログイン', new_user_session_path
+    div class="uk-navbar-right uk-hidden@s"
+      a href='#offcanvas' class="uk-navbar-toggle" uk-toggle="target: #offcanvas"
+        span.uk-icon uk-icon='icon: menu'
+        span.uk-margin-small-left
+          | Menu
+    div class="uk-navbar-brand uk-navbar-center uk-hidden@s"
+      = link_to 'Nyack', posts_show_path, class: 'uk-navbar-item uk-logo'
