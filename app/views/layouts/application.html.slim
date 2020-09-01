@@ -9,27 +9,10 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render 'layouts/header'
-    p.notice
-      = notice
-    p.alert
-      = alert
-    = yield
-
-    #offcanvas uk-offcanvas=""
-      .uk-offcanvas-bar
-        button.uk-offcanvas-close type="button" uk-close=""
-        ul.uk-nav.uk-nav-offcanvas
-          li
-            = link_to 'みんなの投稿', posts_show_path
-          - if user_signed_in?
-            li
-              = link_to '新規投稿', ''
-            li
-              = link_to 'プロフィール', '#'
-            li
-              = link_to 'ログアウト', destroy_user_session_path, method: :delete
-          - else
-            li
-              = link_to '新規登録', new_user_registration_path
-            li
-              = link_to 'ログイン', new_user_session_path
+    main
+      p.notice
+        = notice
+      p.alert
+        = alert
+      = yield
+    = render 'layouts/footer'

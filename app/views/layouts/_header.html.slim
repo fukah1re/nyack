@@ -32,3 +32,22 @@ header
           | Menu
     div class="uk-navbar-brand uk-navbar-center uk-hidden@s"
       = link_to 'Nyack', posts_show_path, class: 'uk-navbar-item uk-logo'
+
+#offcanvas uk-offcanvas=""
+  .uk-offcanvas-bar
+    button.uk-offcanvas-close type="button" uk-close=""
+    ul.uk-nav.uk-nav-offcanvas
+      li
+        = link_to 'みんなの投稿', posts_show_path
+      - if user_signed_in?
+        li
+          = link_to '新規投稿', ''
+        li
+          = link_to 'プロフィール', '#'
+        li
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete
+      - else
+        li
+          = link_to '新規登録', new_user_registration_path
+        li
+          = link_to 'ログイン', new_user_session_path
