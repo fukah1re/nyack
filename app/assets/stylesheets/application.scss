@@ -15,3 +15,23 @@
 
 @import "./_uikit";
 
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #f8f8f8;
+  height: 35px;
+
+  padding-top: 5px;
+}
+
+.footer-copyright {
+  margin: 0;
+}
