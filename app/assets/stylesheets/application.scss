@@ -35,3 +35,8 @@ footer {
 .footer-copyright {
   margin: 0;
 }
+
+.uk-container-sign-up {
+  @extend .uk-container;
+  max-width: 400px;
+}

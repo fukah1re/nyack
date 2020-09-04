@@ -1,28 +1,50 @@
-h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :username
-    br
-    = f.text_field :username
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.uk-container-sign-up
+  legend.uk-legend.uk-text-center
+    | 新規登録
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    form.uk-form-stacked
+      .uk-margin
+        label.uk-form-label for="form-stacked-text"
+          = f.label :email
+        .uk-form-controls
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input", id: "form-stacked-text"
+      .uk-margin
+        label.uk-form-label for="form-stacked-text"
+          = f.label :username
+        .uk-form-controls
+          = f.text_field :username, class: "uk-input", id: "form-stacked-text"
+      .uk-margin
+        label.uk-form-label for="form-stacked-text"
+          = f.label :password
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  文字以上を設定してください)
+        .uk-form-controls
+          = f.password_field :password, autocomplete: "new-password", class: "uk-input", id: "form-stacked-text"
+      .uk-margin
+        label.uk-form-label for="form-stacked-text"
+          = f.label :password_confirmation
+        .uk-form-controls
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "uk-input", id: "form-stacked-text"
+      .uk-margin
+        label.uk-form-label for="form-stacked-text"
+          = f.label :self_introduction
+        .uk-form-controls
+          /= f.self_introduction_field :self_introduction, class: "uk-textarea", id: "form-stacked-text"
+          textarea.uk-textarea rows="2"
+      .uk-margin
+        label.uk-form-label for="form-stacked-text"
+          = f.label :profile_image
+        .uk-form-controls
+          div uk-form-custom="target: true"
+            input type="file"
+            input.uk-input.uk-form-width-medium type="text" placeholder="Select file" disabled=""
+          button.uk-button.uk-button-default
+            | Submit
+      .uk-margin
+        .actions
+          = f.submit "Sign up", class: "uk-button uk-button-primary", rows: "5"
+  = render "devise/shared/links"
