@@ -7,7 +7,7 @@ ja:
         username: "ユーザ名"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
-        self_introduction: "自己紹介"
+        introduce: "自己紹介"
         profile_image: "プロフィール画像"
         remember_me: "ログインを記憶"
     models:
