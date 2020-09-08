@@ -5,17 +5,17 @@
     = render "devise/shared/error_messages", resource: resource
     form.uk-form-stacked
       .uk-margin
-        label.uk-form-label for="form-stacked-text"
+        label.uk-form-label for="form-stacked-email"
           = f.label :email
         .uk-form-controls
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input", id: "form-stacked-text"
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input", id: "form-stacked-email"
       .uk-margin
-        label.uk-form-label for="form-stacked-text"
+        label.uk-form-label for="form-stacked-username"
           = f.label :username
         .uk-form-controls
-          = f.text_field :username, class: "uk-input", id: "form-stacked-text"
+          = f.text_field :username, class: "uk-input", autocomplete: "username", id: "form-stacked-username"
       .uk-margin
-        label.uk-form-label for="form-stacked-text"
+        label.uk-form-label for="form-stacked-password"
           = f.label :password
           - if @minimum_password_length
             em
@@ -23,12 +23,12 @@
               = @minimum_password_length
               |  文字以上を設定してください)
         .uk-form-controls
-          = f.password_field :password, autocomplete: "new-password", class: "uk-input", id: "form-stacked-text"
+          = f.password_field :password, autocomplete: "new-password", class: "uk-input", id: "form-stacked-password"
       .uk-margin
-        label.uk-form-label for="form-stacked-text"
+        label.uk-form-label for="form-stacked-password-confirmation"
           = f.label :password_confirmation
         .uk-form-controls
-          = f.password_field :password_confirmation, autocomplete: "new-password", class: "uk-input", id: "form-stacked-text"
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "uk-input", id: "form-stacked-password-confirmation"
       .uk-margin
         label.uk-form-label for="form-stacked-text"
           = f.label :self_introduction
@@ -36,11 +36,11 @@
           /= f.self_introduction_field :self_introduction, class: "uk-textarea", id: "form-stacked-text"
           textarea.uk-textarea rows="2"
       .uk-margin
-        label.uk-form-label for="form-stacked-text"
+        label.uk-form-label for="form-stacked-profile-image"
           = f.label :profile_image
         .uk-form-controls
           div uk-form-custom="target: true"
-            input type="file"
+            input#formstacked-profile-image type="file"
             input.uk-input.uk-form-width-medium type="text" placeholder="Select file" disabled=""
           button.uk-button.uk-button-default
             | Submit
