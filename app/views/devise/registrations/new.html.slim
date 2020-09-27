@@ -1,3 +1,4 @@
+= javascript_pack_tag 'users'
 .uk-container-sign-up
   legend.uk-legend.uk-text-center
     | 新規登録
@@ -31,20 +32,20 @@
           = f.password_field :password_confirmation, autocomplete: "new-password", class: "uk-input", id: "form-stacked-password-confirmation"
       .uk-margin
         label.uk-form-label for="form-stacked-text"
-          = f.label :self_introduction
+          = f.label :introduce
         .uk-form-controls
-          /= f.self_introduction_field :self_introduction, class: "uk-textarea", id: "form-stacked-text"
-          textarea.uk-textarea rows="2"
+          = f.text_area :introduce, class: "uk-textarea", id: "form-stacked-text", rows: "2"
       .uk-margin
         label.uk-form-label for="form-stacked-profile-image"
           = f.label :profile_image
         .uk-form-controls
           div uk-form-custom="target: true"
-            input#formstacked-profile-image type="file"
+            = f.file_field :profile_image, id: "form-stacked-profile-image", type: "file"
             input.uk-input.uk-form-width-medium type="text" placeholder="Select file" disabled=""
-          button.uk-button.uk-button-default
-            | Submit
-      .uk-margin
+          .uk-margin#profile-image-preview
+            - if @user.profile_image.attached?
+              = image_tag @user.profile_image
+      .uk-margin-medium
         .actions
           = f.submit "Sign up", class: "uk-button uk-button-primary", rows: "5"
   = render "devise/shared/links"
