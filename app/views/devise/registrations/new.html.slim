@@ -1,3 +1,4 @@
+= javascript_pack_tag 'users'
 .uk-container-sign-up
   legend.uk-legend.uk-text-center
     | 新規登録
@@ -41,6 +42,9 @@
           div uk-form-custom="target: true"
             = f.file_field :profile_image, id: "form-stacked-profile-image", type: "file"
             input.uk-input.uk-form-width-medium type="text" placeholder="Select file" disabled=""
+          .uk-margin#profile-image-preview
+            - if @user.profile_image.attached?
+              = image_tag @user.profile_image
       .uk-margin-medium
         .actions
           = f.submit "Sign up", class: "uk-button uk-button-primary", rows: "5"
