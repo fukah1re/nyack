@@ -1,0 +1,6 @@
+- flash.each do |key, value|
+  - key = "primary" if key == "notice"
+  - key = "danger" if key == "alert"
+  div class="uk-alert-#{key}" uk-alert=""
+    <a class="uk-alert-close" uk-close></a>
+    = value

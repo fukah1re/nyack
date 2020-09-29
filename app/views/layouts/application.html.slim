@@ -10,9 +10,6 @@ html
   body
     = render 'layouts/header'
     main
-      p.notice
-        = notice
-      p.alert
-        = alert
+      = render 'layouts/flash_messages'
       = yield
     = render 'layouts/footer'
