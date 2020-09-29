@@ -38,5 +38,10 @@ footer {
 
 .uk-container-sign-up {
   @extend .uk-container;
+  max-width: 950px;
+}
+
+.uk-container-login {
+  @extend .uk-container;
   max-width: 400px;
 }

@@ -1,18 +1,23 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in", class: "uk-button uk-button-default"
-= render "devise/shared/links"
+.uk-container-login
+  legend.uk-legend.uk-text-center
+    | ログイン
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    form.uk-form-stacked
+      .uk-margin
+        label.uk-form-label for="form-stacked-email"
+          = f.label :email
+        .uk-form-controls
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input", id: "form-stacked-email"
+      div
+        label.uk-form-label for="form-stacked-password"
+          = f.label :password
+        .uk-form-controls
+          = f.password_field :password, autocomplete: "current-password", class: "uk-input", id: "form-stacked-password"
+      - if devise_mapping.rememberable?
+        .field.uk-margin-bottom
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit "Log in", class: "uk-button uk-button-primary"
+  .uk-margin
+    = render "devise/shared/links"
