@@ -8,7 +8,13 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :relationships, only: [:create, :destroy]
 
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
