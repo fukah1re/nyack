@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show]
   root 'posts#index'
   get 'posts/index'
   get 'posts/show'
@@ -8,6 +7,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+
+  resources :users, only: [:show]
 
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
