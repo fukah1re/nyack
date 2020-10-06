@@ -1,2 +1,59 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+.profile-container.uk-margin-top
+  div.uk-flex.uk-margin
+    .uk-margin-top.uk-margin-right
+      = image_tag @user.profile_image, class: "profile_image"
+    .uk-flex-middle.uk-margin-top.uk-margin-left
+      .uk-text-bold.uk-margin-small
+        = @user.username
+      .uk-margin-large-bottom
+        = @user.introduce
+      button.uk-button
+        | プロフィールを編集
+  ul.uk-tab uk-tab="connect: #profile-tab"
+    li.uk-active
+      a href="#"
+        | ペット
+    li
+      a href="#"
+        | 投稿
+    li
+      a href="#"
+        | フォロー
+    li
+      a href="#"
+        | フォロワー
+    li
+      a href="#"
+        | お気に入り
+  div.uk-switcher.uk-margin#profile-tab
+    div.uk-active
+      /- if @user.pets.any?
+        = render 'users/show_pets', pets: @pets
+      /- else
+        div
+          | ペットが登録されていません
+    div
+      /- if @user.my_posts.any?
+        = render 'users/show_posts', posts: @posts
+      /- else
+        div
+          | 投稿がありません
+    div
+      /- if @user.followings.any?
+        = render 'users/show_follows', followings: @followings
+      /- else
+        div
+          | ユーザをフォローしていません
+    div
+      /- if @user.followers.any?
+        = render 'users/show_follows', followers: @followers
+      /- else
+        div
+          | フォローされていません
+    div
+      /- if @user.favorite_posts.any?
+        = render 'users/show_posts', favorite_posts: @favorite_posts
+      /- else
+        div
+          | お気に入りに登録した投稿がありません
+  div
