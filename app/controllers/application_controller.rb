@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_url unless user_signed_in?
   end
 
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "ログインしてください"
+      redirect_to login_url
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
