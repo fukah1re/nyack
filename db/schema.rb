@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(version: 2020_10_09_135943) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "other_breed"
+    t.integer "gender"
+    t.date "birthday"
+    t.float "weight"
+    t.float "length"
+    t.text "introduce"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
