@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :pets, except: [:index]
+
   resources :relationships, only: [:create, :destroy]
 
   devise_scope :user do
