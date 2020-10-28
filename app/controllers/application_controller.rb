@@ -16,8 +16,12 @@ class ApplicationController < ActionController::Base
     unless user_signed_in?
       store_location
       flash[:danger] = "ログインしてください"
-      redirect_to login_url
+      redirect_to sign_in_url
     end
+  end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 
   protected
